@@ -20,11 +20,9 @@ import com.account.Alvaro_Elorza_Santander_SBT.repository.AccountRepository;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 
 @RestController
-@Api(value = "Employee Management System")
+@Api(value = "Account Management System")
 public class AccountController {
 
 	protected static Logger logger = LogManager.getLogger(AccountController.class);
@@ -32,7 +30,7 @@ public class AccountController {
 	@Autowired
 	AccountRepository accountRepository;
 
-	@ApiOperation(value = "View a list of available employees", response = Account.class)
+	@ApiOperation(value = "get the account by id", response = Account.class)
 	@RequestMapping(method = RequestMethod.GET, value = "/getAccountById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
 
@@ -52,7 +50,7 @@ public class AccountController {
 
 	}
 
-	@ApiOperation(value = "View a list of available employees", response = List.class)
+	@ApiOperation(value = "View a list of available accounts", response = List.class)
 	@RequestMapping(method = RequestMethod.GET, value = "/getAllAccounts/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Account>> getAllAccounts() {
 
@@ -69,7 +67,7 @@ public class AccountController {
 
 	}
 
-	@ApiOperation(value = "View a list of available employees", response = ResponseEntity.class)
+	@ApiOperation(value = "Update de given account", response = ResponseEntity.class)
 	@RequestMapping(method = RequestMethod.PUT, value = "/updateAccountById/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> updateAccountById(@RequestBody Account accountUpdate) {
 
@@ -91,11 +89,7 @@ public class AccountController {
 
 	}
 
-	@ApiOperation(value = "View a list of available employees", response = ResponseEntity.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
-			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
+	@ApiOperation(value = "Delete the account by id", response = ResponseEntity.class)
 	@RequestMapping(method = RequestMethod.DELETE, value = "/deleteAccountById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> deleteAccountById(@PathVariable Long id) {
 
