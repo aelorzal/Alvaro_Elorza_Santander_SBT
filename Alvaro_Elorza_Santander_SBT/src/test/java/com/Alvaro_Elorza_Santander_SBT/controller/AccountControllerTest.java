@@ -38,7 +38,6 @@ import com.Alvaro_Elorza_Santander_SBT.repository.AccountRepository;
 
 /**
 * This controller manages the HTTP requests for accounts and implements the different operations available
-* Instead of testing server classes unitarily, I preferred to write them with TDD aligned to the user stories, which have a client perspective.
 */
 
 @RunWith(SpringRunner.class)

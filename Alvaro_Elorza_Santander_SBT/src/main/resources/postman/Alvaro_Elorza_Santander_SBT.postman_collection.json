@@ -13,8 +13,8 @@
 					"script": {
 						"id": "d0d3a1f2-4c34-4ff8-993d-2734d95eea17",
 						"exec": [
-							"pm.test(\"Status code is 404\",function(){",
-							"    pm.response.to.have.status(404);",
+							"pm.test(\"Status code is 200\",function(){",
+							"    pm.response.to.have.status(200);",
 							"})"
 						],
 						"type": "text/javascript"
@@ -84,7 +84,8 @@
 						"exec": [
 							"pm.test(\"Status code is 200\",function(){",
 							"    pm.response.to.have.status(200);",
-							"})"
+							"})",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -116,8 +117,8 @@
 					"script": {
 						"id": "e4b94f09-c2f8-409b-80eb-2cc4c9e28e49",
 						"exec": [
-							"pm.test(\"Status code is 404\",function(){",
-							"    pm.response.to.have.status(404);",
+							"pm.test(\"Status code is 200\",function(){",
+							"    pm.response.to.have.status(200);",
 							"})"
 						],
 						"type": "text/javascript"
@@ -206,8 +207,8 @@
 					"script": {
 						"id": "1f2b8a2a-0002-4c5c-958b-33e35ee6f844",
 						"exec": [
-							"pm.test(\"Status code is 404\",function(){",
-							"    pm.response.to.have.status(404);",
+							"pm.test(\"Status code is 200\",function(){",
+							"    pm.response.to.have.status(200);",
 							"})"
 						],
 						"type": "text/javascript"
