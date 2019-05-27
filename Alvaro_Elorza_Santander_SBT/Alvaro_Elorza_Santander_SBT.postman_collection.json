@@ -1,0 +1,488 @@
+{
+	"info": {
+		"_postman_id": "5e63e992-332e-42b1-ab8b-9c8137d94bf4",
+		"name": "Alvaro_Elorza_Santander_SBT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "testNotFoundGetAccountByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0d3a1f2-4c34-4ff8-993d-2734d95eea17",
+						"exec": [
+							"pm.test(\"Status code is 404\",function(){",
+							"    pm.response.to.have.status(404);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts/-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testFoundGetAccountByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a11fdeb0-a04d-464d-9799-5cb6f354f537",
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts/10001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"10001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testGetAllAccounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b39b11a-8d55-4092-8f17-87a1b4b1fffe",
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testNotFoundUpdateAccount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e4b94f09-c2f8-409b-80eb-2cc4c9e28e49",
+						"exec": [
+							"pm.test(\"Status code is 404\",function(){",
+							"    pm.response.to.have.status(404);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": 1001,\r\n\"name\": \"Account 1_2\",\r\n\"balance\": 45.54\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/accounts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testFoundUpdateAccount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5f59f524-b91d-473a-8072-d458e32aa5ca",
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": 10001,\r\n\"name\": \"Account 1_2\",\r\n\"balance\": 45.54\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/accounts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testNotFoundDeleteAccountById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1f2b8a2a-0002-4c5c-958b-33e35ee6f844",
+						"exec": [
+							"pm.test(\"Status code is 404\",function(){",
+							"    pm.response.to.have.status(404);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts/-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testFoundDeleteAccountById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3393cba-d21d-4a9a-85b1-49f1eeb49968",
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts/10003",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"10003"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testWrongIdTypeGetAccountByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "823bc260-37a5-4c21-a39f-e6d57d89e5f9",
+						"exec": [
+							"pm.test(\"Status code is 400\",function(){",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts/dsa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"dsa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testJsonKeyFormatUpdateAccount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e7b76f9-1924-4b7c-80ca-12a4c6f208cf",
+						"exec": [
+							"pm.test(\"Status code is 400\",function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": 1,\r\n\"names\": \"Test Format\",\r\n\"balance\": 564\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/accounts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testJsonValueTypeUpdateAccount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e7b76f9-1924-4b7c-80ca-12a4c6f208cf",
+						"exec": [
+							"pm.test(\"Status code is 400\",function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": \"\",\r\n\"name\": \"Test Format\",\r\n\"balance\": 564\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/accounts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testJsonValueLengthUpdateAccount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e7b76f9-1924-4b7c-80ca-12a4c6f208cf",
+						"exec": [
+							"pm.test(\"Status code is 400\",function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": 1,\r\n\"name\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,\",\r\n\"balance\": 564\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/accounts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testWrongIdTypeDeleteAccountById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e7b76f9-1924-4b7c-80ca-12a4c6f208cf",
+						"exec": [
+							"pm.test(\"Status code is 400\",function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/accounts/sas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"sas"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
