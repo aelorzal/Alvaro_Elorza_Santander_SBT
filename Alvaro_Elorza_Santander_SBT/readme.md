@@ -8,7 +8,7 @@
 
 > Using TDD.
 
-> Use Postman to test your Endpoints.
+> Use Postman to test your Endpoints. [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/61d679637f936ccb7a2e)
 
 > You are free to use the Internet.
 
@@ -20,7 +20,7 @@
 
 *	GET an account by Id
 *	GET all accounts
-* UPDATE an account by Id
+*	UPDATE an account by Id
 *	DELETE an account by Id
 
 ## RESPONSE TYPE
