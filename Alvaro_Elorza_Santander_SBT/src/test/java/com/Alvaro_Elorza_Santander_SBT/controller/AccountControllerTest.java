@@ -65,7 +65,7 @@ public class AccountControllerTest {
 
 	/**
 	 * Try recovering an account for id not found
-	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 200 and an empty json. 
 	 * @throws URISyntaxException
 	 */
 	@Test
@@ -84,7 +84,7 @@ public class AccountControllerTest {
 	
 	/**
 	 * Try recovering an account for id with wrong type of id
-	 * @result Expect an HttpStatus 400, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 400, in a real world application this should be completed with a json with error information
 	 * @throws URISyntaxException
 	 */
 	@Test
@@ -97,13 +97,12 @@ public class AccountControllerTest {
 		ResponseEntity<Account> responseEntity = restTemplate.exchange(requestEntity, Account.class);
 
 		Assert.assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-		Assert.assertNull(responseEntity.getBody().getId());
 
 	}
 
 	/**
 	 * Try recovering an account for id
-	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 200 and a json with account details
 	 * @throws URISyntaxException
 	 */	
 	@Test
@@ -128,7 +127,7 @@ public class AccountControllerTest {
 
 	/**
 	 * Try recovering a list of Accounts
-	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 200 and a List of accounts.
 	 * @throws URISyntaxException
 	 */
 	@Test
@@ -152,7 +151,7 @@ public class AccountControllerTest {
 
 	/**
 	 * Try update an account not found
-	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 200, in a real world application this should be completed with a json with informning the number of updates, in this case 0
 	 * @throws URISyntaxException
 	 */
 	@Test
@@ -176,7 +175,7 @@ public class AccountControllerTest {
 	
 	/**
 	 * Try update an account with json param name key format incorrect
-	 * @result Expect an HttpStatus 400, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 400, in a real world application this should be completed with a json with error information
 	 * @throws URISyntaxException
 	 */
 	@Test
@@ -207,7 +206,7 @@ public class AccountControllerTest {
 	
 	/**
 	 * Try update an account with json param id value type incorrect
-	 * @result Expect an HttpStatus 400, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 400, in a real world application this should be completed with a json with error information
 	 * @throws URISyntaxException
 	 */
 	@Test
@@ -237,7 +236,7 @@ public class AccountControllerTest {
 	
 	/**
 	 * Try update an account with json param name size incorrect
-	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 400, in a real world application this should be completed with a json with error information
 	 * @throws URISyntaxException
 	 */
 	@Test
@@ -268,7 +267,7 @@ public class AccountControllerTest {
 	
 	/**
 	 * Try update an account
-	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 200, in a real world application this should be completed with a json with informning the number of updates
 	 * @throws URISyntaxException
 	 */
 	@Test
@@ -297,7 +296,7 @@ public class AccountControllerTest {
 
 	/**
 	 * Try delete an account by id not found 
-	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 200, in a real world application this should be completed with a json with informning the number of deletes, in this case 0
 	 * @throws URISyntaxException
 	 */
 	@Test
@@ -315,7 +314,7 @@ public class AccountControllerTest {
 
 	/**
 	 * Try delete an account by id 
-	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 200, in a real world application this should be completed with a json with informning the number of deletes
 	 * @throws URISyntaxException
 	 */
 	@Test
@@ -336,7 +335,7 @@ public class AccountControllerTest {
 	
 	/**
 	 * Try delete an account with id value type incorrect
-	 * @result Expect an HttpStatus 400, in a real world application this should be changed with a json with meaningful information
+	 * @result Expect an HttpStatus 400, in a real world application this should be completed with a json with error information
 	 * @throws URISyntaxException
 	 */
 	@Test

@@ -36,7 +36,7 @@ public class AccountController {
 	* @param id Account Id
 	* @return Account details in responseEntity format
 	* @throws Exception in case and error happens, this will mean that the user gets a HTTP 500 error code, in a real
-	* world application this should be changed with a json with meaningful information
+	* world application this should be completed with a json with meaningful information
 	*/
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Account> getAccountById(@Valid @PathVariable Long id) throws Exception {
@@ -59,7 +59,7 @@ public class AccountController {
 	 * This method provides a list of available accounts
 	 * @return List Account in responseEntity format 
 	 * @throws Exception in case and error happens, this will mean that the user gets a HTTP 500 error code, in a real
-	 * world application this should be changed with a json with meaningful information
+	 * world application this should be completed with a json with meaningful information
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Account>> getAllAccounts() throws Exception {
@@ -75,7 +75,7 @@ public class AccountController {
 	* @param accountUpdate Account details to modify
 	* @return ResponseEntity
 	* @throws Exception in case and error happens, this will mean that the user gets a HTTP 500 error code, in a real
-	* world application this should be changed with a json with meaningful information
+	* world application this should be completed with a json with meaningful information
 	*/
 	@RequestMapping(method = RequestMethod.PUT, value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> updateAccount(@Valid @RequestBody Account accountUpdate) throws Exception {
@@ -97,7 +97,7 @@ public class AccountController {
 	 * @param id Account Id
 	 * @return ResponseEntity
 	 * @throws Exception in case and error happens, this will mean that the user gets a HTTP 500 error code, in a real
-	 * world application this should be changed with a json with meaningful information
+	 * world application this should be completed with a json with meaningful information
 	 */
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> deleteAccountById(@Valid @PathVariable Long id) throws Exception {
