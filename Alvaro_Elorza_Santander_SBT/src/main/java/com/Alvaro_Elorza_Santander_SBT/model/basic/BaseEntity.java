@@ -10,9 +10,16 @@ import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+
+/**
+ * The base entity for all entities that need an id
+ */
 @MappedSuperclass
 @Getter @Setter
 public class BaseEntity{
+	/**
+	 * The id for all entities not nullable 
+	 */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id", nullable = false)

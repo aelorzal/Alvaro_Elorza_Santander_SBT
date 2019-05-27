@@ -34,8 +34,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.Alvaro_Elorza_Santander_SBT.model.Account;
 import com.Alvaro_Elorza_Santander_SBT.repository.AccountRepository;
 
-/*
-Instead of testing server classes unitarily, I preferred to write them with TDD aligned to the user stories, which have a client perspective.
+
+
+/**
+* This controller manages the HTTP requests for accounts and implements the different operations available
+* Instead of testing server classes unitarily, I preferred to write them with TDD aligned to the user stories, which have a client perspective.
 */
 
 @RunWith(SpringRunner.class)
@@ -60,6 +63,11 @@ public class AccountControllerTest {
 		return serverUrl + port;
 	}
 
+	/**
+	 * Try recovering an account for id not found
+	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */
 	@Test
 	public void testNotFoundGetAccountByID() throws URISyntaxException {
 
@@ -69,10 +77,16 @@ public class AccountControllerTest {
 
 		ResponseEntity<Account> responseEntity = restTemplate.exchange(requestEntity, Account.class);
 
-		Assert.assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
+		Assert.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+		Assert.assertNull(responseEntity.getBody());
 
 	}
 	
+	/**
+	 * Try recovering an account for id with wrong type of id
+	 * @result Expect an HttpStatus 400, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */
 	@Test
 	public void testWrongIdTypeGetAccountByID() throws URISyntaxException {
 
@@ -83,9 +97,15 @@ public class AccountControllerTest {
 		ResponseEntity<Account> responseEntity = restTemplate.exchange(requestEntity, Account.class);
 
 		Assert.assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+		Assert.assertNull(responseEntity.getBody().getId());
 
 	}
 
+	/**
+	 * Try recovering an account for id
+	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */	
 	@Test
 	public void testFoundGetAccountByID() throws URISyntaxException {
 		Account getAccount = accountRepository.findAll().get(0);
@@ -106,6 +126,11 @@ public class AccountControllerTest {
 		accountRepository.delete(getAccount);
 	}
 
+	/**
+	 * Try recovering a list of Accounts
+	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */
 	@Test
 	public void testGetAllAccounts() throws URISyntaxException {
 
@@ -125,6 +150,11 @@ public class AccountControllerTest {
 		Assert.assertEquals(accountList.size(), accountsSize);
 	}
 
+	/**
+	 * Try update an account not found
+	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */
 	@Test
 	public void testNotFoundUpdateAccount() throws URISyntaxException {
 
@@ -140,10 +170,15 @@ public class AccountControllerTest {
 
 		ResponseEntity<Account> responseEntity = restTemplate.exchange(requestEntity, Account.class);
 
-		Assert.assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
+		Assert.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 
 	}
-
+	
+	/**
+	 * Try update an account with json param name key format incorrect
+	 * @result Expect an HttpStatus 400, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */
 	@Test
 	public void testJsonKeyFormatUpdateAccount() throws URISyntaxException, JSONException {
 
@@ -170,10 +205,13 @@ public class AccountControllerTest {
 
 	}
 	
+	/**
+	 * Try update an account with json param id value type incorrect
+	 * @result Expect an HttpStatus 400, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */
 	@Test
 	public void testJsonValueTypeUpdateAccount() throws URISyntaxException, JSONException {
-
-
 
 		/* Test json values are correct type*/
 		JSONObject updateAccount = new JSONObject();
@@ -197,10 +235,13 @@ public class AccountControllerTest {
 
 	}
 	
+	/**
+	 * Try update an account with json param name size incorrect
+	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */
 	@Test
 	public void testJsonValueLengthUpdateAccount() throws URISyntaxException, JSONException {
-
-
 
 		/* Test json values are correct type*/
 		JSONObject updateAccount = new JSONObject();
@@ -225,6 +266,11 @@ public class AccountControllerTest {
 
 	}
 	
+	/**
+	 * Try update an account
+	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */
 	@Test
 	public void testFoundUpdateAccount() throws URISyntaxException {
 
@@ -249,6 +295,11 @@ public class AccountControllerTest {
 
 	}
 
+	/**
+	 * Try delete an account by id not found 
+	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */
 	@Test
 	public void testNotFoundDeleteAccountById() throws URISyntaxException {
 
@@ -258,11 +309,15 @@ public class AccountControllerTest {
 
 		ResponseEntity<Account> responseEntity = restTemplate.exchange(requestEntity, Account.class);
 
-		// Ensure Status Code is 404 Not Found
-		Assert.assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
+		Assert.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 
 	}
 
+	/**
+	 * Try delete an account by id 
+	 * @result Expect an HttpStatus 200, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */
 	@Test
 	public void testFoundDeleteAccountById() throws URISyntaxException {
 
@@ -279,6 +334,11 @@ public class AccountControllerTest {
 
 	}
 	
+	/**
+	 * Try delete an account with id value type incorrect
+	 * @result Expect an HttpStatus 400, in a real world application this should be changed with a json with meaningful information
+	 * @throws URISyntaxException
+	 */
 	@Test
 	public void testWrongIdTypeDeleteAccountById() throws URISyntaxException {
 

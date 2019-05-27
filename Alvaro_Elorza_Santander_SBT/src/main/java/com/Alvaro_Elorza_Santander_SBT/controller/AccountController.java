@@ -20,6 +20,9 @@ import com.Alvaro_Elorza_Santander_SBT.repository.AccountRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+* This controller manages the HTTP requests for accounts and implements the different operations available
+*/
 @RestController
 @Slf4j
 @RequestMapping("/accounts")
@@ -28,12 +31,19 @@ public class AccountController {
 	@Autowired
 	AccountRepository accountRepository;
 
+	/**
+	* This method retrieves the information of an account
+	* @param id Account Id
+	* @return Account details in responseEntity format
+	* @throws Exception in case and error happens, this will mean that the user gets a HTTP 500 error code, in a real
+	* world application this should be changed with a json with meaningful information
+	*/
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Account> getAccountById(@Valid @PathVariable Long id) throws Exception {
 
 		log.info("account >> " + id);
 
-		ResponseEntity<Account> responseEntity = new ResponseEntity<Account>(HttpStatus.NOT_FOUND);
+		ResponseEntity<Account> responseEntity = new ResponseEntity<Account>(HttpStatus.OK);
 
 		Optional<Account> optional = accountRepository.findById(id);
 		if (optional.isPresent()) {
@@ -44,48 +54,61 @@ public class AccountController {
 
 	}
 
+	
+	/**
+	 * This method provides a list of available accounts
+	 * @return List Account in responseEntity format 
+	 * @throws Exception in case and error happens, this will mean that the user gets a HTTP 500 error code, in a real
+	 * world application this should be changed with a json with meaningful information
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Account>> getAllAccounts() throws Exception {
 
 		log.info("getAllAccounts");
-		ResponseEntity<List<Account>> responseEntity = new ResponseEntity<List<Account>>(HttpStatus.NOT_FOUND);
 		List<Account> accountList = accountRepository.findAll();
-		responseEntity = new ResponseEntity<List<Account>>(accountList, HttpStatus.OK);
-
-		return responseEntity;
+		return new ResponseEntity<List<Account>>(accountList, HttpStatus.OK);
 
 	}
 
+	/**
+	* This method allows you to modify an account with the values ​​provided
+	* @param accountUpdate Account details to modify
+	* @return ResponseEntity
+	* @throws Exception in case and error happens, this will mean that the user gets a HTTP 500 error code, in a real
+	* world application this should be changed with a json with meaningful information
+	*/
 	@RequestMapping(method = RequestMethod.PUT, value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> updateAccount(@Valid @RequestBody Account accountUpdate) throws Exception {
 
 		log.info("updateAccountById >>" + accountUpdate.getId());
 
-		HttpStatus httpStatus = HttpStatus.NOT_FOUND;
 
 		Optional<Account> optional = accountRepository.findById(accountUpdate.getId());
 		if (optional.isPresent()) {
 			accountRepository.save(accountUpdate);
-			httpStatus = HttpStatus.OK;
 		}
 
-		return new ResponseEntity<Void>(httpStatus);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 
 	}
 
+	/**
+	 * This method allows you to delete an account by the id provided
+	 * @param id Account Id
+	 * @return ResponseEntity
+	 * @throws Exception in case and error happens, this will mean that the user gets a HTTP 500 error code, in a real
+	 * world application this should be changed with a json with meaningful information
+	 */
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> deleteAccountById(@Valid @PathVariable Long id) throws Exception {
 		log.info("deleteAccountById >>" + id);
 
-		ResponseEntity<Void> responseEntity = new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-
 		Optional<Account> optional = accountRepository.findById(id);
 		if (optional.isPresent()) {
 			accountRepository.deleteById(id);
-			responseEntity = new ResponseEntity<Void>(HttpStatus.OK);
 		}
 
-		return responseEntity;
+		return new ResponseEntity<Void>(HttpStatus.OK);
 
 	}
 }
